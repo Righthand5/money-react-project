@@ -1,60 +1,35 @@
 import React, {useState} from 'react';
 import {Wrapper} from './NumberPadSection/Wrapper';
 import {generateOutput} from './NumberPadSection/generateOutput';
-
-const  NumberPadSection:React.FC = ()=>{
-    const [output, _setOutput] = useState('0')
+type Props = {
+    onOK?:()=>void;
+    value:number;
+    onChange:(value:number) => void
+}
+const  NumberPadSection:React.FC<Props> = (props)=>{
+     const output = props.value.toString()
     const setOutput = (output:string) =>{
+         let value
         if(output.length > 16){
-            output = output.slice(0,16);
+            value = parseFloat(output.slice(0,16));
         }else if(output.length === 0){
-            output = '0'
+            value = 0;
+        }else{
+            value = parseFloat(output)
         }
-        _setOutput(output);
+        props.onChange(value);
     }
     const onClickButtonWrapper = (e:React.MouseEvent)=> {
         const text = (e.target as HTMLButtonElement).textContent;
         if(text === null){return;}
         if(text === 'OK'){
-            //TDOO
+            if(props.onOK){
+                props.onOK()
+            }
             return;
         }
-        if('0123456789'.split('').concat(['删除','清空']).indexOf(text)>=0){
+        if('0123456789.'.split('').concat(['删除','清空']).indexOf(text)>=0){
             setOutput(generateOutput(text,output));
-        }
-        switch (text){
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
-                if(output === '0'){
-                    setOutput(text)
-                }else{
-                    setOutput(output + text);
-                }break
-            case '.':
-                if(output.indexOf('.')>=0){return;}
-                setOutput(output + '.')
-                break;
-            case '删除':
-                if(output.length === 1){
-                    setOutput('0')
-                }else{
-                    setOutput(output.slice(0,-1))
-                }
-                break;
-            case '清空':
-                setOutput('0');
-                break;
-            case 'OK':
-                console.log('确认')
-                break;
         }
     };
     return(

@@ -25,7 +25,7 @@ const generateOutput = (text:string,output = '0') =>{
                 return output.slice(0,-1)//这个返回值有可能是undefined
             }
         case '清空':
-            return '';
+            return ('');
         default:
             return '';
     }

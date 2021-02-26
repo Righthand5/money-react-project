@@ -20,12 +20,16 @@ const Wrapper = styled.section`
     }
   }
 `
-const NoteSection: React.FunctionComponent = () => {
+type Props = {
+    value:string;
+    onChange:(value:string)=>void
+}
+const NoteSection: React.FunctionComponent<Props> = (props) => {
     const [note, setNote] = useState('');
     const refInput = useRef<HTMLInputElement>(null);
     const onBlur = () =>{
         if(refInput.current !== null){
-            setNote(refInput.current.value);
+            props.onChange(refInput.current.value);
         }
     }
     return (
