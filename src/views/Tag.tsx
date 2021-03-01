@@ -29,18 +29,11 @@ const Tag: React.FC = (props)=>{
     const {findTag,updateTag,deleteTag} = useTags()
     let { id:idString } = useParams<Params>()
     const tag = findTag(parseInt(idString))
-    if(tag){
-    return(
-        <Layout>
-            <Topbar>
-                <Icon name = "left"/>
-                <span>编辑标签</span>
-                <Icon/>
-            </Topbar>
+    const tagContent =(tag:{id:number;name:string})=> ( <div>
             <InputWrapper>
                 <Input label="标签名" type="text" placeholder="标签名"
                        value={tag.name}
-                        onChange={(e)=>{updateTag(tag.id,{name:e.target.value}) }}
+                       onChange={(e)=>{updateTag(tag.id,{name:e.target.value}) }}
                 />
             </InputWrapper>
             <Center>
@@ -49,18 +42,22 @@ const Tag: React.FC = (props)=>{
                 <Space/>
                 <Button onClick = {
                     ()=>{deleteTag(tag.id);
-                    //window.history.back();
-                }
+                        //window.history.back();
+                    }
                 }>删除标签</Button>
             </Center>
+        </div>
+    )
+    return(
+        <Layout>
+            <Topbar>
+                <Icon name = "left"/>
+                <span>编辑标签</span>
+                <Icon/>
+            </Topbar>
+
+            {tag ? tagContent(tag): <Center>tag 不存在</Center>}
         </Layout>
     )
-}else{
-        return(
-            <div>
-                tag 不存在
-            </div>
-        )
-    }
 }
 export {Tag}
