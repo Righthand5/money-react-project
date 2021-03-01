@@ -42,7 +42,7 @@ function Tags() {
                             <Link to = {'/tags/'+tag.id}>
                                 <span className="oneLine">{tag.name}</span>
                                 <span className= "right_border">
-                                <Icon name = "right"/>
+                                <Icon name="right"/>
                                 </span>
                             </Link>
                     </li>)
