@@ -1,8 +1,6 @@
 import {useEffect, useState} from 'react';
 import {createId} from './lib/createId';
 import {useUpdate} from './hooks/useUpdate';
-import {stringify} from 'querystring';
-
 const useTags = () =>{
     const  [tags,setTags] = useState<{id:number;name:string}[]>([]);
     useEffect(()=>{
