@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 const Wrapper = styled.section`
   >ul{
     display: flex;
-    background: #c4c4c4;
+    //background: #c4c4c4;
     >li{
         width: 50%;
         text-align: center;
@@ -32,6 +32,7 @@ const CategorySection:React.FC<Props> = (props) =>{
     const category = props.value;
     const categroyMap = {'-':'支出','+':'收入'};
     return(
+        //复习一下
         <Wrapper>
             <ul>
                 {categoryList.map(c=>
