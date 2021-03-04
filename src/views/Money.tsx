@@ -14,7 +14,7 @@ const  defaultFormData = {
     amount:0
 }
 const CategoryWrapper = styled.div`
-  background: #c4c4c4;
+  background: #a8c8df;
 `
 
 function Money() {
@@ -34,7 +34,6 @@ function Money() {
     }
     return (
         <MyLayout scrollTop={9999}>
-            {selected.note}
             <TagSection value = {selected.tagIds} onChange={(tagIds)=>onChange({tagIds})}/>
             <NoteSection  value={selected.note}
                           onChange = {(note)=>onChange({note})

@@ -6,15 +6,21 @@ const Wrapper = styled.section`
     display: flex;
     //background: #c4c4c4;
     >li{
+        color: #4f5e8a;
+        font-weight: bold;
         width: 50%;
         text-align: center;
         padding:16px 0;
         position: relative;
+        &.selected{
+        color: #fde67f;
+        }
         &.selected::after{
+          
           content:'';
           display:block;
           height: 3px;
-          background: #333;
+          background: #fde67f;
           position: absolute;
           bottom:0;
           width: 100%;

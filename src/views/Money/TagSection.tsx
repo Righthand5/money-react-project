@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import React, {useState} from 'react';
 import {useTags} from '../../hooks/useTags';
 import {createId} from '../../lib/createId';
+import Icon from '../../components/icon';
 
 const Wrapper = styled.section`
   background: #ffffff;
@@ -52,14 +53,14 @@ const TagSection:React.FunctionComponent<Props> = (props)=>{
     const getClass = (tagId:number) => selectedTagIds.indexOf(tagId) >= 0 ? 'selected' : '';
     return(
         <Wrapper>
-        <ol>
+        <ol className="MinRen">
             {tags.map(tag =>
                 <li key={tag.id} onClick={
                     () => {
                         onToggleTag(tag.id)
                     }
                 } className = {getClass(tag.id)}
-                >{tag.name}</li>
+                ><Icon name="Naruto" />{tag.name}</li>
             )}
         </ol>
         <button onClick={addTag}>新增标签</button>
