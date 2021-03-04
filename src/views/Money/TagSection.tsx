@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import React, {useState} from 'react';
 import {useTags} from '../../hooks/useTags';
-import {createId} from '../../lib/createId';
 import Icon from '../../components/icon';
 
 const Wrapper = styled.section`
@@ -14,25 +13,41 @@ const Wrapper = styled.section`
   align-items: flex-start;
   > ol{
       margin:0 -12px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
       > li{
-            display: inline-block;
-             background: #D9D9D9;
+            background: #a8c8df;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             border-radius:18px;
             font-size:14px;
             padding:3px 18px;
             margin: 8px 12px;
+            color: #f6f6f6;
+            .icon{
+              height: 30px;
+              width: 30px;
+            }
             &.selected{
               background: #f60;
             }
           }
   }
-  > button{
-    color:#666;
-    background: none;
+  > div{
+    width: 100%;
+    display: flex;
+    justify-content:flex-end;
+      >button{
+    color:#fcfbfb;
+    background: #a8c8df;
     border:none;
     padding:2px 4px;
-    border-bottom: 1px solid #333;
     margin-top: 8px;
+     box-shadow: 10px 10px 5px #888888;
+    }
   }
 `
 type Props = {
@@ -60,10 +75,10 @@ const TagSection:React.FunctionComponent<Props> = (props)=>{
                         onToggleTag(tag.id)
                     }
                 } className = {getClass(tag.id)}
-                ><Icon name="Naruto" />{tag.name}</li>
+                ><Icon name="Naruto"/><span>{tag.name}</span></li>
             )}
         </ol>
-        <button onClick={addTag}>新增标签</button>
+            <div><button onClick={addTag}>新增标签</button></div>
         </Wrapper>
     )
 }

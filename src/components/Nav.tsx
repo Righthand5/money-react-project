@@ -10,23 +10,24 @@ const NavWrapper = styled.nav`
   >ul{
     display: flex;
     >li{
-      border: blue;
       width: 33.3333%;
       text-align: center;
       >a{
+          color: #5f5f5f;
           display: flex;
           flex-direction: column;
           padding: 4px 0;
           justify-content: center;
           align-items: center;
         .icon{
+          fill: #5f5f5f;
           width: 24px;  
           height: 24px;
         }
         &.selected{
-          color:red;
+          color:#a8c8df;
           .icon{
-            fill:red;
+            fill:#ff6600;
           }
         }
       }

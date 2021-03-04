@@ -14,6 +14,7 @@ const Wrapper = styled.section`
   }
   > .pad{
   > button{
+    color:#786e64;
     float: left;
     width: 25%;
     height: 64px;
@@ -41,10 +42,10 @@ const Wrapper = styled.section`
       background: #f3eca4;
     }
     &:nth-child(12){
-      background: #bd6e5d;
+      background: #c65d57;
     }
     &:nth-child(14){
-      background: #c65d57;
+      background: #e26f50;
     }
   }
   }
